@@ -1,76 +1,39 @@
 from flask import Flask, render_template, request, session, current_app
+from dotenv import load_dotenv
 import sqlite3
 import datetime
 from textblob import TextBlob
 from spellchecker import SpellChecker
 import joblib
 import pickle
+import os
 import re
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import PorterStemmer
-
+from langchain.output_parsers import ResponseSchema, StructuredOutputParser
+from langchain.prompts import PromptTemplate
+from langchain_openai import ChatOpenAI
+from langchain_openai import OpenAI
+from langchain.chains import LLMChain
+load_dotenv()
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
-# Preprocess text function
-def preprocess_text(text):
-    # Lowercasing
-    text = text.lower()
-
-    # Removing PII (Personal Identifiable Information)
-    text = re.sub(r'\b(?:\d{10,}|(?:\w+\.?)*\w+@(?:\w+\.)+[a-zA-Z]{2,}\b)', 'PII_REMOVED', text)
-
-    # Simple Spell Checking and Correction
-    corrected_text = []
-    words = word_tokenize(text)
-    for word in words:
-        if not word.isalpha():
-            continue  # Skip non-alphabetic words
-        corrected_text.append(word)  # Just keep the word as is
-    text = ' '.join(corrected_text)
-
-    # Removing Special Characters and Symbols
-    text = re.sub(r'[^\w\s]', '', text)
-
-    # Tokenization
-    tokens = word_tokenize(text)
-
-    # Removing Stopwords
-    stop_words = set(stopwords.words('english'))
-    tokens = [word for word in tokens if word not in stop_words]
-
-    # Stemming
-    stemmer = PorterStemmer()
-    tokens = [stemmer.stem(word) for word in tokens]
-
-    # Joining tokens back into text
-    processed_text = ' '.join(tokens)
-
-    return processed_text
-
-# Load the random forest classifier
-rf_classifier = joblib.load('rf_model.pkl')
-
-# Load the TF-IDF vectorizer
-with open('tfidf_vectorizer.pkl', 'rb') as f:
-    tfidf_vectorizer = pickle.load(f)
+response_schemas = [
+    ResponseSchema(name = 'Scam', description= 'Return 1 if the message is likely to be scam or Return 0 if the message is likely not a spam'),
+    ResponseSchema(name = 'reason', description = "Give the reason on why the message is a scam or not a scam")
+]
+output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
+format_instructions = output_parser.get_format_instructions()
+prompt = PromptTemplate(template = "You are a Singaporean expert which knows all about scams in Singapore. Your task is to check whethere the inputted text is a scam and return the defined json instructions accordingly. This is the text: {text} \n {format_instructions}",
+                        input_variables = ["text"],
+                        partial_variables = {"format_instructions": format_instructions})
+model = ChatOpenAI(openai_api_key = os.getenv('OPENAI_API_KEY'))
+chain = prompt | model | output_parser
+response = chain.invoke({"text": "Ah Long Lai Liao"})
 
 def scam_classifier(text):
-    # Sample text
-    sample_text = text
+    response = chain.invoke({'text': text})
+    return response
 
-    # Preprocess the text
-    processed_text = preprocess_text(sample_text)
-
-    # Transform the text using the TF-IDF vectorizer
-    vectorized_text = tfidf_vectorizer.transform([processed_text])
-    # Making a prediction
-    prediction = rf_classifier.predict(vectorized_text)
-    if prediction[0] == [1]:
-        return "Scam!"
-    else:
-        return "Not Scam!"
 
 # Get the current date and time
 now = datetime.datetime.now()
@@ -144,8 +107,10 @@ def index():
       confidence = tanalysis(text, sentiment, errors)
 
       # Determine if the message is likely to be a scam or not
-      result = scam_classifier(text)
-
+    #   if scam_classifier(text)['Scam'] == 1:
+    #       result = "Scam!"
+      determine_results = scam_classifier(text)
+      result = f"Scam! Reason: {determine_results['reason']}" if determine_results["Scam"] == 1 else f"Not Scam! Reason: {determine_results['reason']}"
       # Insert the message and its analysis results into the database
       cursor.execute('INSERT INTO messages (text, polarity, subjectivity) VALUES (?, ?, ?)', (text, sentiment, subjectivity))
       cursor.execute('INSERT INTO activity (current_date, current_time) VALUES (?,?)', (date,time))
