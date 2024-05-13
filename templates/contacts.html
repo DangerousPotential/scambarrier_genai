@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contacts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Homepage</a></li>
+            <li><a href="{{ url_for('usage') }}">Usage Analytics</a></li>
+            <li><a href="{{ url_for('contacts') }}">Contacts</a></li>
+            <li><a href="{{ url_for('info') }}">Information</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}
+    <div class="contacts">
+      <h1>Country Hotline</h1>
+      <div class="centered">
+        <label for="country-select">Select a country:</label>
+        <select id="countrySelect">
+            <option value="Select_Country">Select Country</option>
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Albania">Albania</option>
+            <option value="Algeria">Algeria</option>
+            <option value="Andorra">Andorra</option>
+            <option value="Angola">Angola</option>
+            <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Armenia">Armenia</option>
+            <option value="Australia">Australia</option>
+            <option value="Austria">Austria</option>
+            <option value="Azerbaijan">Azerbaijan</option>
+            <option value="Bahamas">Bahamas</option>
+            <option value="Bahrain">Bahrain</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Barbados">Barbados</option>
+            <option value="Belarus">Belarus</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Belize">Belize</option>
+            <option value="Benin">Benin</option>
+            <option value="Bhutan">Bhutan</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+            <option value="Botswana">Botswana</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Brunei">Brunei</option>
+            <option value="Bulgaria">Bulgaria</option>
+            <option value="Burkina Faso">Burkina Faso</option>
+            <option value="Burundi">Burundi</option>
+            <option value="Cabo Verde">Cabo Verde</option>
+            <option value="Cambodia">Cambodia</option>
+            <option value="Cameroon">Cameroon</option>
+            <option value="Canada">Canada</option>
+            <option value="Central African Republic">Central African Republic</option>
+            <option value="Chad">Chad</option>
+            <option value="Chile">Chile</option>
+            <option value="China">China</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Comoros">Comoros</option>
+            <option value="Congo, Democratic Republic of the Congo">Congo, Democratic Republic of the Congo</option>
+            <option value="Congo, Republic of the Congo">Congo, Republic of the</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Croatia">Croatia</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Cyprus">Cyprus</option>
+            <option value="Czechia">Czechia</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Djibouti">Djibouti</option>
+            <option value="Dominica">Dominica</option>
+            <option value="Dominican Republic">Dominican Republic</option>
+            <option value="East Timor (Timor-Leste)">East Timor (Timor-Leste)</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Egypt">Egypt</option>
+            <option value="El Salvador">El Salvador</option>
+            <option value="Equatorial Guinea">Equatorial Guinea</option>
+            <option value="Eritrea">Eritrea</option>
+            <option value="Estonia">Estonia</option>
+            <option value="Eswatini">Eswatini</option>
+            <option value="Ethiopia">Ethiopia</option>
+            <option value="Fiji">Fiji</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="Gabon">Gabon</option>
+            <option value="Gambia">Gambia</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Germany">Germany</option>
+            <option value="Ghana">Ghana</option>
+            <option value="Greece">Greece</option>
+            <option value="Grenada">Grenada</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Guinea">Guinea</option>
+            <option value="Guinea-Bissau">Guinea-Bissau</option>
+            <option value="Guyana">Guyana</option>
+            <option value="Haiti">Haiti</option>
+            <option value="Honduras">Honduras</option>
+            <option value="Hungary">Hungary</option>
+            <option value="Iceland">Iceland</option>
+            <option value="India">India</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Iran">Iran</option>
+            <option value="Iraq">Iraq</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Israel">Israel</option>
+            <option value="Italy">Italy</option>
+            <option value="Jamaica">Jamaica</option>
+            <option value="Japan">Japan</option>
+            <option value="Jordan">Jordan</option>
+            <option value="Kazakhstan">Kazakhstan</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Kiribati">Kiribati</option>
+            <option value="Korea, North">Korea, North</option>
+            <option value="Korea, South">Korea, South</option>
+            <option value="Kosovo">Kosovo</option>
+            <option value="Kuwait">Kuwait</option>
+            <option value="Kyrgyzstan">Kyrgyzstan</option>
+            <option value="Laos">Laos</option>
+            <option value="Latvia">Latvia</option>
+            <option value="Lebanon">Lebanon</option>
+            <option value="Lesotho">Lesotho</option>
+            <option value="Liberia">Liberia</option>
+            <option value="Libya">Libya</option>
+            <option value="Liechtenstein">Liechtenstein</option>
+            <option value="Lithuania">Lithuania</option>
+            <option value="Luxembourg">Luxembourg</option>
+            <option value="Madagascar">Madagascar</option>
+            <option value="Malawi">Malawi</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="Maldives">Maldives</option>
+            <option value="Mali">Mali</option>
+            <option value="Malta">Malta</option>
+            <option value="Marshall Islands">Marshall Islands</option>
+            <option value="Mauritania">Mauritania</option>
+            <option value="Mauritius">Mauritius</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Micronesia">Micronesia</option>
+            <option value="Moldova">Moldova</option>
+            <option value="Monaco">Monaco</option>
+            <option value="Mongolia">Mongolia</option>
+            <option value="Montenegro">Montenegro</option>
+            <option value="Morocco">Morocco</option>
+            <option value="Mozambique">Mozambique</option>
+            <option value="Myanmar (Burma)">Myanmar (Burma)</option>
+            <option value="Namibia">Namibia</option>
+            <option value="Nauru">Nauru</option
+            <option value="Nepal">Nepal</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Nicaragua">Nicaragua</option>
+            <option value="Niger">Niger</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="North Macedonia">North Macedonia</option>
+            <option value="Norway">Norway</option>
+            <option value="Oman">Oman</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Palau">Palau</option>
+            <option value="Panama">Panama</option>
+            <option value="Papua New Guinea">Papua New Guinea</option>
+            <option value="Paraguay">Paraguay</option>
+            <option value="Peru">Peru</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Poland">Poland</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Qatar">Qatar</option>
+            <option value="Romania">Romania</option>
+            <option value="Russia">Russia</option>
+            <option value="Rwanda">Rwanda</option>
+            <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+            <option value="Saint Lucia">Saint Lucia</option>
+            <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+            <option value="Samoa">Samoa</option>
+            <option value="San Marino">San Marino</option>
+            <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Senegal">Senegal</option>
+            <option value="Serbia">Serbia</option>
+            <option value="Seychelles">Seychelles</option>
+            <option value="Sierra Leone">Sierra Leone</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Slovakia">Slovakia</option>
+            <option value="Slovenia">Slovenia</option>
+            <option value="Solomon Islands">Solomon Islands</option>
+            <option value="Somalia">Somalia</option>
+            <option value="South Africa">South Africa</option>
+            <option value="South Sudan">South Sudan</option>
+            <option value="Spain">Spain</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="Sudan">Sudan</option>
+            <option value="Suriname">Suriname</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="Syria">Syria</option>
+            <option value="Taiwan">Taiwan</option>
+            <option value="Tajikistan">Tajikistan</option>
+            <option value="Tanzania">Tanzania</option>
+            <option value="Thailand">Thailand</option>
+            <option value="Togo">Togo</option>
+            <option value="Tonga">Tonga</option>
+            <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+            <option value="Tunisia">Tunisia</option>
+            <option value="Turkey">Turkey</option>
+            <option value="Turkmenistan">Turkmenistan</option>
+            <option value="Tuvalu">Tuvalu</option>
+            <option value="Uganda">Uganda</option>
+            <option value="Ukraine">Ukraine</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Uzbekistan">Uzbekistan</option>
+            <option value="Vanuatu">Vanuatu</option>
+            <option value="Vatican City">Vatican City</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Vietnam">Vietnam</option>
+            <option value="Yemen">Yemen</option>
+            <option value="Zambia">Zambia</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+        </select>
+      </div>
+      
+      <div id="hotline-container"></div>
+      <p id="hotlineInfo"></p>
+  
+      <p1>If you have been scammed, please take the following actions:</p1>
+      <ol>
+          <li>Report to authorities immediately:</li>
+          <ul>
+              <li>File an online report</li>
+              <li>File a in-person report at your nearest Police Center</li>
+          </ul>
+          <li>Provide the police with the following information with all relavant details:</li>
+          <ul>
+              <li>Text message sent</li>
+              <li>Full website URL</li>
+              <li>Full phone number</li>
+              <li>Type of call</li>
+          </ul>
+          <li>If you suspect you are being scammed, immediately suspend your bank account.</li>
+      </ol>
+    </div>
+
+    <script>
+      function updateHotline() {
+  var countrySelect = document.getElementById("countrySelect");
+  var selectedCountry = countrySelect.options[countrySelect.selectedIndex].value;
+  var hotlineInfo = document.getElementById("hotlineInfo");
+
+  // Define the hotline information for each country
+  var hotlineData = {
+    "Select_Country": "Select a country first",
+    "Afghanistan": "Call 119 for scam prevention hotline in Afghanistan",
+    "Albania": "Call 116 for scam prevention hotline in Albania",
+    "Algeria": "Call 3030 for scam prevention hotline in Algeria",
+    "Andorra": "Call 116 for scam prevention hotline in Andorra",
+    "Angola": "Call 113 for scam prevention hotline in Angola",
+    "Antigua and Barbuda": "Call 911 for scam prevention hotline in Antigua and Barbuda",
+    "Argentina": "Call 0800-222-2222 for scam prevention hotline in Argentina",
+    "Armenia": "Call 911 for scam prevention hotline in Armenia",
+    "Australia": "Call 1800-007-007 for scam prevention hotline in Australia",
+    "Austria": "Call 0800-222-555 for scam prevention hotline in Austria",
+    "Azerbaijan": "Call 990 for scam prevention hotline in Azerbaijan",
+    "Bahamas": "Call 919 for scam prevention hotline in Bahamas",
+    "Bahrain": "Call 992 for scam prevention hotline in Bahrain",
+    "Bangladesh": "Call 999 or 01777787878 for scam prevention hotline in Bangladesh",
+    "Barbados": "Call 211 for scam prevention hotline in Barbados",
+    "Belarus": "Call 102 for scam prevention hotline in Belarus",
+    "Belgium": "Call 070-245-245 for scam prevention hotline in Belgium",
+    "Belize": "Call 911 for scam prevention hotline in Belize",
+    "Benin": "Call 117 for scam prevention hotline in Benin",
+    "Bhutan": "Call 113 for scam prevention hotline in Bhutan",
+    "Bolivia": "Call 110 for scam prevention hotline in Bolivia",
+    "Bosnia and Herzegovina": "Call 122 for scam prevention hotline in Bosnia and Herzegovina",
+    "Botswana": "Call 999 for scam prevention hotline in Botswana",
+    "Brazil": "Call 151 for scam prevention hotline in Brazil",
+    "Brunei": "Call 993 for scam prevention hotline in Brunei",
+    "Bulgaria": "Call 166 for scam prevention hotline in Bulgaria",
+    "Burkina Faso": "Call 17 for scam prevention hotline in Burkina Faso",
+    "Burundi": "Call 117 for scam prevention hotline in Burundi",
+    "Cabo Verde": "Call 132 for scam prevention hotline in Cabo Verde",
+    "Cambodia": "Call 110 for scam prevention hotline in Cambodia",
+    "Cameroon": "Call 117 for scam prevention hotline in Cameroon",
+    "Canada": "Call 1-888-495-8501 for scam prevention hotline in Canada",
+    "Central African Republic": "Call 117 for scam prevention hotline in Central African Republic",
+    "Chad": "Call 17 for scam prevention hotline in Chad",
+    "Chile": "Call 146 for scam prevention hotline in Chile",
+    "China": "Call 110 for scam prevention hotline in China",
+    "Colombia": "Call 165 for scam prevention hotline in Colombia",
+    "Comoros": "Call 17 for scam prevention hotline in Comoros",
+    "Congo, Democratic Republic of the Congo": "Call 117 for scam prevention hotline in Congo, Democratic Republic of the Congo",
+    "Congo, Republic of the Congo": "Call 117 for scam prevention hotline in Congo, Republic of the Congo",
+    "Costa Rica": "Call 1176 for scam prevention hotline in Costa Rica",
+    "Croatia": "Call 192 for scam prevention hotline in Croatia",
+    "Cuba": "Call 106 for scam prevention hotline in Cuba",
+    "Cyprus": "Call 1460 for scam prevention hotline in Cyprus",
+    "Czech Republic": "Call 158 for scam prevention hotline in Czech Republic",
+    "Denmark": "Call 112 for scam prevention hotline in Denmark",
+    "Djibouti": "Call 17 for scam prevention hotline in Djibouti",
+    "Dominica": "Call 911 for scam prevention hotline in Dominica",
+    "Dominican Republic": "Call 911 for scam prevention hotline in Dominican Republic",
+    "Ecuador": "Call 1800-DELITO (1800-335486) for scam prevention hotline in Ecuador",
+    "Egypt": "Call 16516 for scam prevention hotline in Egypt",
+    "El Salvador": "Call 911 for scam prevention hotline in El Salvador",
+    "Equatorial Guinea": "Call 117 for scam prevention hotline in Equatorial Guinea",
+    "Eritrea": "Call 113 for scam prevention hotline in Eritrea",
+    "Estonia": "Call 112 for scam prevention hotline in Estonia",
+    "Eswatini": "Call 999 for scam prevention hotline in Eswatini",
+    "Ethiopia": "Call 8335 for scam prevention hotline in Ethiopia",
+    "Fiji": "Call 917 for scam prevention hotline in Fiji",
+    "Finland": "Call 112 for scam prevention hotline in Finland",
+    "France": "Call 17 for scam prevention hotline in France",
+    "Gabon": "Call 1730 for scam prevention hotline in Gabon",
+    "Gambia": "Call 117 for scam prevention hotline in Gambia",
+    "Georgia": "Call 112 for scam prevention hotline in Georgia",
+    "Germany": "Call 0800-123-123 for scam prevention hotline in Germany",
+    "Ghana": "Call 18555 for scam prevention hotline in Ghana",
+    "Greece": "Call 110 for scam prevention hotline in Greece",
+    "Grenada": "Call 911 for scam prevention hotline in Grenada",
+    "Guatemala": "Call 110 for scam prevention hotline in Guatemala",
+    "Guinea": "Call 117 for scam prevention hotline in Guinea",
+    "Guinea-Bissau": "Call 117 for scam prevention hotline in Guinea-Bissau",
+    "Guyana": "Call 911 for scam prevention hotline in Guyana",
+    "Haiti": "Call 114 for scam prevention hotline in Haiti",
+    "Honduras": "Call 911 for scam prevention hotline in Honduras",
+    "Hungary": "Call 112 for scam prevention hotline in Hungary",
+    "Iceland": "Call 112 for scam prevention hotline in Iceland",
+    "India": "Call 155260 for scam prevention hotline in India",
+    "Indonesia": "Call 119 for scam prevention hotline in Indonesia",
+    "Iran": "Call 110 for scam prevention hotline in Iran",
+    "Iraq": "Call 112 for scam prevention hotline in Iraq",
+    "Ireland": "Call 112 for scam prevention hotline in Ireland",
+    "Israel": "Call 105 for scam prevention hotline in Israel",
+    "Italy": "Call 117 for scam prevention hotline in Italy",
+    "Jamaica": "Call 119 for scam prevention hotline in Jamaica",
+    "Japan": "Call 110 for scam prevention hotline in Japan",
+    "Jordan": "Call 911 for scam prevention hotline in Jordan",
+    "Kazakhstan": "Call 102 for scam prevention hotline in Kazakhstan",
+    "Kenya": "Call 999 for scam prevention hotline in Kenya",
+    "Kiribati": "Call 192 for scam prevention hotline in Kiribati",
+    "Korea, North": "Call 119 for scam prevention hotline in Korea, North",
+    "Korea, South": "Call 112 for scam prevention hotline in Korea, South",
+    "Kosovo": "Call 192 for scam prevention hotline in Kosovo",
+    "Kuwait": "Call 112 for scam prevention hotline in Kuwait",
+    "Kyrgyzstan": "Call 102 for scam prevention hotline in Kyrgyzstan",
+    "Laos": "Call 1190 for scam prevention hotline in Laos",
+    "Latvia": "Call 110 for scam prevention hotline in Latvia",
+    "Lebanon": "Call 112 for scam prevention hotline in Lebanon",
+    "Lesotho": "Call 123 for scam prevention hotline in Lesotho",
+    "Liberia": "Call 911 for scam prevention hotline in Liberia",
+    "Libya": "Call 1515 for scam prevention hotline in Libya",
+    "Liechtenstein": "Call 117 for scam prevention hotline in Liechtenstein",
+    "Lithuania": "Call 112 for scam prevention hotline in Lithuania",
+    "Luxembourg": "Call 113 for scam prevention hotline in Luxembourg",
+    "Madagascar": "Call 117 for scam prevention hotline in Madagascar",
+    "Malawi": "Call 997 for scam prevention hotline in Malawi",
+    "Malaysia": "Call 997 for scam prevention hotline in Malaysia",
+    "Maldives": "Call 119 for scam prevention hotline in Maldives",
+    "Mali": "Call 17 for scam prevention hotline in Mali",
+    "Malta": "Call 112 for scam prevention hotline in Malta",
+    "Marshall Islands": "Call 911 for scam prevention hotline in Marshall Islands",
+    "Mauritania": "Call 116 for scam prevention hotline in Mauritania",
+    "Mauritius": "Call 113 for scam prevention hotline in Mauritius",
+    "Mexico": "Call 089 for scam prevention hotline in Mexico",
+    "Micronesia": "Call 911 for scam prevention hotline in Micronesia",
+    "Moldova": "Call 112 for scam prevention hotline in Moldova",
+    "Monaco": "Call 17 for scam prevention hotline in Monaco",
+    "Mongolia": "Call 102 for scam prevention hotline in Mongolia",
+    "Montenegro": "Call 122 for scam prevention hotline in Montenegro",
+    "Morocco": "Call 190 for scam prevention hotline in Morocco",
+    "Mozambique": "Call 117 for scam prevention hotline in Mozambique",
+    "Myanmar": "Call 199 for scam prevention hotline in Myanmar",
+    "Namibia": "Call 10111 for scam prevention hotline in Namibia",
+    "Nauru": "Call 110 for scam prevention hotline in Nauru",
+    "Nepal": "Call 100 for scam prevention hotline in Nepal",
+    "Netherlands": "Call 0900-8844 for scam prevention hotline in Netherlands",
+    "New Zealand": "Call 0508 638 723 for scam prevention hotline in New Zealand",
+    "Nicaragua": "Call 118 for scam prevention hotline in Nicaragua",
+    "Nigeria": "Call 0700-2255-6327 for scam prevention hotline in Nigeria",
+    "North Macedonia": "Call 192 for scam prevention hotline in North Macedonia",
+    "Norway": "Call 02800 for scam prevention hotline in Norway",
+    "Oman": "Call 9999 for scam prevention hotline in Oman",
+    "Pakistan": "Call 9911 for scam prevention hotline in Pakistan",
+    "Palau": "Call 911 for scam prevention hotline in Palau",
+    "Panama": "Call 311 for scam prevention hotline in Panama",
+    "Papua New Guinea": "Call 111 for scam prevention hotline in Papua New Guinea",
+    "Paraguay": "Call 911 for scam prevention hotline in Paraguay",
+    "Peru": "Call 105 for scam prevention hotline in Peru",
+    "Philippines": "Call 911 for scam prevention hotline in Philippines",
+    "Poland": "Call 112 for scam prevention hotline in Poland",
+    "Portugal": "Call 112 for scam prevention hotline in Portugal",
+    "Qatar": "Call 999 for scam prevention hotline in Qatar",
+    "Romania": "Call 112 for scam prevention hotline in Romania",
+    "Russia": "Call 112 for scam prevention hotline in Russia",
+    "Rwanda": "Call 112 for scam prevention hotline in Rwanda",
+    "Saint Kitts and Nevis": "Call 911 for scam prevention hotline in Saint Kitts and Nevis",
+    "Saint Lucia": "Call 911 for scam prevention hotline in Saint Lucia",
+    "Saint Vincent and the Grenadines": "Call 911 for scam prevention hotline in Saint Vincent and the Grenadines",
+    "Samoa": "Call 995 for scam prevention hotline in Samoa",
+    "San Marino": "Call 112 for scam prevention hotline in San Marino",
+    "Sao Tome and Principe": "Call 112 for scam prevention hotline in Sao Tome and Principe",
+    "Saudi Arabia": "Call 999 for scam prevention hotline in Saudi Arabia",
+    "Senegal": "Call 800-200-200 for scam prevention hotline in Senegal",
+    "Serbia": "Call 192 for scam prevention hotline in Serbia",
+    "Seychelles": "Call 133 for scam prevention hotline in Seychelles",
+    "Sierra Leone": "Call 019 for scam prevention hotline in Sierra Leone",
+    "Singapore": "Call 1800-722-6688 for scam prevention hotline in Singapore",
+    "Slovakia": "Call 112 for scam prevention hotline in Slovakia",
+    "Slovenia": "Call 113 for scam prevention hotline in Slovenia",
+    "Solomon Islands": "Call 999 for scam prevention hotline in Solomon Islands",
+    "Somalia": "Call 888 for scam prevention hotline in Somalia",
+    "South Africa": "Call 10111 for scam prevention hotline in South Africa",
+    "South Sudan": "Call 111 for scam prevention hotline in South Sudan",
+    "Spain": "Call 112 for scam prevention hotline in Spain",
+    "Sri Lanka": "Call 119 for scam prevention hotline in Sri Lanka",
+    "Sudan": "Call 999 for scam prevention hotline in Sudan",
+    "Suriname": "Call 115 for scam prevention hotline in Suriname",
+    "Sweden": "Call 113 13 for scam prevention hotline in Sweden",
+    "Switzerland": "Call 117 for scam prevention hotline in Switzerland",
+    "Syria": "Call 112 for scam prevention hotline in Syria",
+    "Taiwan": "Call 165 for scam prevention hotline in Taiwan",
+    "Tajikistan": "Call 112 for scam prevention hotline in Tajikistan",
+    "Tanzania": "Call 112 for scam prevention hotline in Tanzania",
+    "Thailand": "Call 191 for scam prevention hotline in Thailand",
+    "Togo": "Call 117 for scam prevention hotline in Togo",
+    "Tonga": "Call 911 for scam prevention hotline in Tonga",
+    "Trinidad and Tobago": "Call 999 for scam prevention hotline in Trinidad and Tobago",
+    "Tunisia": "Call 197 for scam prevention hotline in Tunisia",
+    "Turkey": "Call 155 for scam prevention hotline in Turkey",
+    "Turkmenistan": "Call 102 for scam prevention hotline in Turkmenistan",
+    "Tuvalu": "Call 911 for scam prevention hotline in Tuvalu",
+    "Uganda": "Call 999 for scam prevention hotline in Uganda",
+    "Ukraine": "Call 102 for scam prevention hotline in Ukraine",
+    "United Arab Emirates": "Call 901 for scam prevention hotline in the United Arab Emirates",
+    "United Kingdom": "Call 0300 123 2040 for scam prevention hotline in the United Kingdom",
+    "United States": "Call 1-877-FTC-HELP (1-877-382-4357) for scam prevention hotline in the United States",
+    "Uruguay": "Call 0800-1011 for scam prevention hotline in Uruguay",
+    "Uzbekistan": "Call 102 for scam prevention hotline in Uzbekistan",
+    "Vanuatu": "Call 112 for scam prevention hotline in Vanuatu",
+    "Vatican City": "Call 113 for scam prevention hotline in Vatican City",
+    "Venezuela": "Call 911 for scam prevention hotline in Venezuela",
+    "Vietnam": "Call 113 for scam prevention hotline in Vietnam",
+    "Yemen": "Call 199 for scam prevention hotline in Yemen",
+    "Zambia": "Call 991 for scam prevention hotline in Zambia",
+    "Zimbabwe": "Call 994 for scam prevention hotline in Zimbabwe"
+  };
+
+  // Get the hotline information for the selected country
+  var selectedHotline = hotlineData[selectedCountry];
+
+  // Display the hotline information
+  hotlineInfo.textContent = selectedHotline;
+}
+// Attach the updateHotline function to the change event of the country select dropdown
+  var countrySelect = document.getElementById("countrySelect");
+  countrySelect.addEventListener("change", updateHotline);
+
+// Call the updateHotline function initially to display the hotline information for the default selected country
+  updateHotline();
+    </script>
+
+    {% endblock %}
+</body>
+</html>

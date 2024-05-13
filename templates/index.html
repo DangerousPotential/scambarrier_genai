@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScamBarrier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  
+  <style>
+
+    hr {
+      border-color: black;
+    }
+    
+    .box {
+      border: 1px solid #5261ad;
+      border-radius: 4px;
+      padding: 10px;
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 20px;
+      background-color: #ededed;
+    }
+
+    .box .message {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #212121;
+    }
+
+    .box .result {
+      text-align: center;
+      font-size: 25px; 
+      color: #212121;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+
+  
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('index') }}">Homepage</a></li>
+      <li><a href="{{ url_for('usage') }}">Usage Analytics</a></li>
+      <li><a href="{{ url_for('contacts') }}">Contacts</a></li>
+      <li><a href="{{ url_for('info') }}">Information</a></li>
+    </ul>
+  </nav>
+  <h1>Welcome to ScamBarrier</h1>
+  <p>Your cyber-wellness is our priority.</p>
+
+<hr>
+  
+  <form method="post" action="{{ url_for('index') }}">
+    <label for="message">Message:</label>
+    <textarea id="box" name="box"></textarea>
+    <br><br>
+    <input type="submit" value="Submit" />
+  </form>
+
+  {% if message or result %}
+    <div class="box">
+
+      {% if result %}
+        <div class="result">{{ result }}</div>
+      {% endif %}
+      
+      {% if message %}
+        <div class="message">{{ message }}</div>
+      {% endif %}
+
+    </div>
+  {% endif %}
+  <!--{% if confidence %}
+    <div class="confidence">{{ confidence }}</div>
+  {% endif %}
+  {% if records %}
+    {% for record in records %}
+    <div class="records">{{ record }}</div>
+    {% endfor %}
+  {% endif %} -->
+</body>
+</html>

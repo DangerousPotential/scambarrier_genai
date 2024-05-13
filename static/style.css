@@ -1,0 +1,160 @@
+/* Global Styles */
+body {
+  background-color: #212121;
+  color: #ededed;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #ededed;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+}
+
+/* Navigation Styles */
+nav {
+  background-color: black;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin-right: 50px;
+}
+
+
+/* Homepage */
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 36px;
+}
+
+p {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  font-size: 20px
+}
+
+form {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
+label[for="message"] {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #ededed;
+}
+
+textarea {
+  width: 80%;
+  height: 150px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  background-color: #ededed;
+  resize: vertical;
+  font-family: Arial, sans-serif;
+}
+
+input[type="submit"] {
+  background-color: #5261ad;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  font-family: Arial, sans-serif; 
+}
+
+label {
+  font-family: Arial, sans-serif; 
+}
+
+/* Contacts and Information Page */
+.container > main {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Contacts */
+.contacts {
+  margin-top: 20px;
+}
+
+label {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+select {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+/* p1 {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  margin-left: 40px
+  font-size: 20px
+} */
+
+ol {
+  margin-left: 60px;
+}
+
+ul {
+  margin-left: 100px;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+
+
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

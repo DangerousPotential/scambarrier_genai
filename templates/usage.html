@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Usage Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('index') }}">Homepage</a></li>
+      <li><a href="{{ url_for('usage') }}">Usage Analytics</a></li>
+      <li><a href="{{ url_for('contacts') }}">Contacts</a></li>
+      <li><a href="{{ url_for('info') }}">Information</a></li>
+    </ul>
+  </nav>
+  {% block content %}
+    <h1>Web App Usage Analysis</h1>
+    <p>Most frequent hour(s) of usage: {{ usage_analysis.most_frequent_hours }}</p>
+    <p>Time range of most frequent usage: {{ usage_analysis.time_range }}</p>
+  {% endblock %}
+</body>
+</html>
